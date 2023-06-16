@@ -5,7 +5,7 @@ import { ICountry } from "@/types/types";
 export default function Home() {
   const data: ICountry[] = use(fetchCountries());
   return (
-    <main>
+    <main className={""}>
       <Map data={data} />
     </main>
   );

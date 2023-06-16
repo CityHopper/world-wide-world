@@ -51,9 +51,10 @@ export default function Map({ data }: { data: ICountry[] }) {
   }, [data, tooltipId]);
 
   return (
-    <div className={"map-container"}>
+    <section className={"map-container h-screen w-screen"}>
       <VectorMap
         {...WorldLowRes}
+        className={"map"}
         checkedLayers={selected}
         layerProps={{ onClick, onMouseOver, onMouseMove, onMouseOut }}
       />
@@ -62,7 +63,6 @@ export default function Map({ data }: { data: ICountry[] }) {
           <div>{tooltipData?.name?.common}</div>
         </div>
       )}
-      <div>tooltipData: {tooltipData && JSON.stringify(tooltipData)}</div>
-    </div>
+    </section>
   );
 }
