@@ -58,8 +58,8 @@ export default function Map({ data }: { data: ICountry[] }) {
   }, [data, tooltipId]);
 
   useEffect(() => {
-    console.log("isModalOpen", isModalOpen);
-  }, [isModalOpen]);
+    console.log("modalCountry", modalCountry);
+  }, [modalCountry]);
 
   return (
     <section className={"map-container h-screen w-screen"}>
@@ -75,7 +75,15 @@ export default function Map({ data }: { data: ICountry[] }) {
         </div>
       )}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        ddsgdgsgds
+        <h2>
+          {modalCountry?.flag} {modalCountry?.name?.official}
+        </h2>
+        <table>
+          <tr>
+            <th></th>
+            <td></td>
+          </tr>
+        </table>
       </Modal>
     </section>
   );

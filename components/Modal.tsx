@@ -14,7 +14,7 @@ export function Modal({ isOpen, onClose, children }: IModalProps) {
 
   useEffect(() => {
     const { current: el } = modalRef;
-    if (isOpen) {
+    if (isOpen && el) {
       el.showModal();
     } else {
       el.close();
@@ -26,9 +26,9 @@ export function Modal({ isOpen, onClose, children }: IModalProps) {
       ref={modalRef}
       onClick={onClick}
       onClose={onClose}
-      className={"relative bg-white"}
+      className={"relative w-[70%] h-[70%] p-0 min-w-[300px] rounded-[12px]"}
     >
-      {children}
+      <div className={"w-full h-full bg-white p-6"}>{children}</div>
     </dialog>
   );
 }
