@@ -1,3 +1,5 @@
+import { ReactNode } from "react";
+
 export interface ICountry {
   altSpellings: string[];
   area: number;
@@ -24,4 +26,10 @@ export interface ICountry {
   cioc: string;
 
   [key: string]: any;
+}
+
+export interface IModalProps {
+  isOpen: boolean;
+  onClose: () => void;
+  children: ReactNode;
 }

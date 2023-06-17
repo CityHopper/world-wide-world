@@ -2,6 +2,7 @@
 
 .map-container {
     @apply flex justify-center items-center;
+    background-image: linear-gradient(to right top, #051937, #004d7a, #008793, #00bf72, #a8eb12);
 }
 
 .map-container svg {
@@ -13,25 +14,29 @@
 }
 
 .map-container svg path {
-    fill: grey;
+    @apply fill-green-200;
+    fill: #e8e8e8;
     cursor: pointer;
     outline: none;
 }
 
+.map-container svg path[aria-checked="true"] {
+    @apply fill-green-400;
+}
+
 .map-container svg path:hover {
-    fill: navy;
+    @apply fill-green-400;
     opacity: 0.8;
 }
 
 .tooltip {
+    @apply text-green-400 bg-yellow-100;
     position: fixed;
     border-radius: 3px;
     -webkit-border-radius: 3px;
     -moz-border-radius: 3px;
-    color: pink;
     font-family: sans-serif, Verdana;
     font-size: smaller;
     padding: 2px 8px;
-    background-color: black;
     pointer-events: none;
 }
