@@ -1,5 +1,6 @@
 import { IModalProps } from "@/types/types";
 import { useCallback, useEffect, useRef } from "react";
+import "@/styles/modal.css";
 
 export function Modal({ isOpen, onClose, children }: IModalProps) {
   const modalRef = useRef(null);
@@ -28,6 +29,7 @@ export function Modal({ isOpen, onClose, children }: IModalProps) {
       onClose={onClose}
       className={"relative w-[70%] h-[70%] p-0 min-w-[300px] rounded-[12px]"}
     >
+      <button className={"close"} onClick={onClose} />
       <div className={"w-full h-full bg-white p-6"}>{children}</div>
     </dialog>
   );
