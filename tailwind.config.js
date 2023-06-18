@@ -6,14 +6,18 @@ module.exports = {
     "./app/**/*.{js,ts,jsx,tsx,mdx}",
   ],
   theme: {
-    colors: {
-      "green-100": "#00BF72FF",
-      "green-200": "#008793FF",
-      "green-300": "#004D7AFF",
-      "green-400": "#051937FF",
-      "yellow-100": "#ffea08",
-    },
     extend: {
+      colors: {
+        "green-100": "#00BF72FF",
+        "green-200": "#008793FF",
+        "green-300": "#004D7AFF",
+        "green-400": "#051937FF",
+        "yellow-100": "#ffea08",
+      },
+      fontFamily: {
+        sans: ["Graphik", "sans-serif"],
+        serif: ["Merriweather", "serif"],
+      },
       backgroundImage: {
         "gradient-radial": "radial-gradient(var(--tw-gradient-stops))",
         "gradient-conic":
