@@ -9,9 +9,10 @@ import { ICountry } from "@/types/types";
 import { Modal } from "@/components/Modal";
 import { capitalizeFirst } from "@/lib/functions";
 import Image from "next/image";
+// const Modal = dynamic(() => import("@/components/Modal"), { ssr: false });
 
 export default function Map({ data }: { data: ICountry[] }) {
-  const [allSelected, setAllSelected] = useState<string[]>([]);
+  // const [allSelected, setAllSelected] = useState<string[]>([]);
   const [tooltipId, setTooltipId] = useState<string>();
   const [isTooltipVisible, setIsTooltipVisible] = useState<boolean>(false);
   const [tooltipY, setTooltipY] = useState<number>(0);
@@ -122,7 +123,7 @@ export default function Map({ data }: { data: ICountry[] }) {
                   </tr>
                   <tr>
                     <th>Capital</th>
-                    <td>{modalCountry?.capital}</td>
+                    <td>{modalCountry?.capital || "-"}</td>
                   </tr>
                   <tr>
                     <th>Languages</th>
@@ -140,13 +141,13 @@ export default function Map({ data }: { data: ICountry[] }) {
                           Female
                         </span>
                         <div className={"col-span-3"}>
-                          {modalCountry?.demonyms?.eng?.f}
+                          {modalCountry?.demonyms?.eng?.f || "-"}
                         </div>
                         <span className={"badge bg-gray-100 col-span-1"}>
                           Male
                         </span>{" "}
                         <div className={"col-span-3"}>
-                          {modalCountry?.demonyms?.eng?.m}
+                          {modalCountry?.demonyms?.eng?.m || "-"}
                         </div>
                       </div>
                     </td>
@@ -174,10 +175,6 @@ export default function Map({ data }: { data: ICountry[] }) {
                     </td>
                   </tr>
                   <tr>
-                    <th>Start Of Week</th>
-                    <td>{capitalizeFirst(modalCountry?.startOfWeek)}</td>
-                  </tr>
-                  <tr>
                     <th>Gini coefficient</th>
                     <td>
                       {modalCountry?.gini
@@ -196,6 +193,14 @@ export default function Map({ data }: { data: ICountry[] }) {
                     </td>
                   </tr>
                   <tr>
+                    <th>Start Of Week</th>
+                    <td>{capitalizeFirst(modalCountry?.startOfWeek) || ""}</td>
+                  </tr>
+                  {/*<tr>*/}
+                  {/*  <th>Driving on</th>*/}
+                  {/*  /!*<td>{capitalizeFirst(modalCountry?.car?.side) || ""}</td>*!/*/}
+                  {/*</tr>*/}
+                  <tr>
                     <th>Flag</th>
                     <td>
                       <div className={"relative min-h-[120px] w-full"}>
@@ -204,6 +209,8 @@ export default function Map({ data }: { data: ICountry[] }) {
                           src={modalCountry?.flags?.png || ""}
                           alt={modalCountry?.flags?.alt || "Flag"}
                           fill={true}
+                          sizes={"100px"}
+                          onError={() => alert("Image Error")}
                         />
                       </div>
                     </td>

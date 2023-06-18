@@ -6,6 +6,7 @@ export interface ICountry {
   borders: string[];
   callingCodes: string[];
   capital: string;
+  car: { signs: string[]; side: string };
   cca2?: string;
   cca3?: string;
   cca4?: string;

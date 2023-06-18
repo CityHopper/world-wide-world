@@ -34,3 +34,5 @@ export function Modal({ isOpen, onClose, children }: IModalProps) {
     </dialog>
   );
 }
+
+export default Modal;
