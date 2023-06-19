@@ -16,7 +16,7 @@ export interface ICountry {
   demonyms: { [key: string]: { f: string; m: string } };
   flags: { alt: string; png: string; svg: string };
   gini: { [key: string | number]: number };
-  languages: { [key: string]: string };
+  languages: { [key: string]: string } | {};
   maps: { googleMaps: string; openStreetMap: string };
   name: {
     common: string;

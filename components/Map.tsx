@@ -134,9 +134,11 @@ export default function Map({ data }: { data: ICountry[] }) {
                   <tr>
                     <th>Languages</th>
                     <td>
-                      {Object.values(modalCountry?.languages)?.map((l, lId) => (
-                        <span key={lId}>{lId > 0 ? `, ${l}` : `${l}`}</span>
-                      ))}
+                      {Object.values(modalCountry?.languages!)?.map(
+                        (l, lId) => (
+                          <span key={lId}>{lId > 0 ? `, ${l}` : `${l}`}</span>
+                        )
+                      ) || "-"}
                     </td>
                   </tr>
                   <tr>
@@ -161,15 +163,17 @@ export default function Map({ data }: { data: ICountry[] }) {
                   <tr>
                     <th>Currencies</th>
                     <td>
-                      {Object.values(modalCountry?.currencies)?.map(
-                        (l, lId) => (
-                          <span key={lId}>
-                            {lId > 0
-                              ? `, ${l?.name} (${l?.symbol})`
-                              : `${l?.name} (${l?.symbol})`}
-                          </span>
-                        )
-                      )}
+                      {modalCountry?.currencies
+                        ? Object.values(modalCountry?.currencies!).map(
+                            (l, lId) => (
+                              <span key={lId}>
+                                {lId > 0
+                                  ? `, ${l?.name} (${l?.symbol})`
+                                  : `${l?.name} (${l?.symbol})`}
+                              </span>
+                            )
+                          )
+                        : "-"}
                     </td>
                   </tr>
                   <tr>
