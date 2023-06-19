@@ -17,6 +17,7 @@ export interface ICountry {
   flags: { alt: string; png: string; svg: string };
   gini: { [key: string | number]: number };
   languages: { [key: string]: string };
+  maps: { googleMaps: string; openStreetMap: string };
   name: {
     common: string;
     official: string;

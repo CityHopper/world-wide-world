@@ -4,11 +4,13 @@ import { MouseEvent, useEffect, useState } from "react";
 import { VectorMap } from "@south-paw/react-vector-maps";
 import WorldLowRes from "@/public/world-low-res.json";
 import "@/styles/map.css";
-// import "@/types/vectorMap";
-import { ICountry } from "@/types/types";
+import { ICountry } from "@/types";
 import { Modal } from "@/components/Modal";
 import { capitalizeFirst } from "@/lib/functions";
 import Image from "next/image";
+import Link from "next/link";
+import GoogleMapsLogo from "@/public/Google_Maps_Logo.png";
+import OSMLogo from "@/public/osm_logo.png";
 
 export default function Map({ data }: { data: ICountry[] }) {
   // const [allSelected, setAllSelected] = useState<string[]>([]);
@@ -77,16 +79,21 @@ export default function Map({ data }: { data: ICountry[] }) {
         </div>
       )}
       <Modal isOpen={isModalOpen} onClose={() => setIsModalOpen(false)}>
-        {modalCountry && (
+        {(modalCountry as ICountry) ? (
           <article>
             <section className={"sticky top-0 bg-white pb-4 bg-opacity-80"}>
-              <h2 className={"text-2xl"}>
-                {modalCountry?.flag} {modalCountry?.name?.common} (
-                {modalCountry?.name?.official})
+              <h2 className={"inline-block text-2xl"}>
+                {modalCountry?.flag} {modalCountry?.name?.common}&nbsp;
               </h2>
+              <span className={"inline-block text-l text-red"}>
+                ({modalCountry?.name?.official})
+              </span>
               {modalCountry?.name?.nativeName &&
                 Object.values(modalCountry?.name?.nativeName)?.map((n, nId) => (
-                  <span key={nId} className={"text-gray-400 text-xs pl-8"}>
+                  <span
+                    key={nId}
+                    className={"block text-gray-400 text-xs pl-8"}
+                  >
                     {n?.common} ({n?.official}) &nbsp;
                   </span>
                 ))}
@@ -195,10 +202,10 @@ export default function Map({ data }: { data: ICountry[] }) {
                     <th>Start Of Week</th>
                     <td>{capitalizeFirst(modalCountry?.startOfWeek) || ""}</td>
                   </tr>
-                  {/*<tr>*/}
-                  {/*  <th>Driving on</th>*/}
-                  {/*  /!*<td>{capitalizeFirst(modalCountry?.car?.side) || ""}</td>*!/*/}
-                  {/*</tr>*/}
+                  <tr>
+                    <th>Driving on</th>
+                    <td>{capitalizeFirst(modalCountry?.car?.side) || ""}</td>
+                  </tr>
                   <tr>
                     <th>Flag</th>
                     <td>
@@ -214,9 +221,38 @@ export default function Map({ data }: { data: ICountry[] }) {
                       </div>
                     </td>
                   </tr>
+                  <tr>
+                    <th>View on</th>
+                    <td className={"flex items-center justify-around"}>
+                      <Link
+                        href={modalCountry?.maps?.googleMaps || ""}
+                        target={"_blank"}
+                      >
+                        <Image
+                          src={GoogleMapsLogo}
+                          alt={`View ${modalCountry?.name.common} on OpenStreetMap`}
+                          width={100}
+                        />
+                      </Link>
+                      <Link
+                        href={modalCountry?.maps?.openStreetMap || ""}
+                        target={"_blank"}
+                      >
+                        <Image
+                          src={OSMLogo}
+                          alt={`View ${modalCountry?.name.common} on OpenStreetMap`}
+                          width={60}
+                        />
+                      </Link>
+                    </td>
+                  </tr>
                 </tbody>
               </table>
             </section>
+          </article>
+        ) : (
+          <article className={"flex justify-center items-center"}>
+            Try again later
           </article>
         )}
       </Modal>

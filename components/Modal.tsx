@@ -1,4 +1,4 @@
-import { IModalProps } from "@/types/types";
+import { IModalProps } from "@/types";
 import { MouseEvent, useCallback, useEffect, useRef } from "react";
 import "@/styles/modal.css";
 
@@ -35,5 +35,3 @@ export function Modal({ isOpen, onClose, children }: IModalProps) {
     </dialog>
   );
 }
-
-export default Modal;

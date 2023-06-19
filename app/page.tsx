@@ -1,6 +1,6 @@
 import Map from "@/components/Map";
 import { use } from "react";
-import { ICountry } from "@/types/types";
+import { ICountry } from "@/types";
 
 // import 'server-only' // 이걸 import 하면 무조건 서버컴포넌트 역할
 

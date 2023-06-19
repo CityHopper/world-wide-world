@@ -4,7 +4,7 @@
 
 /*@layer base {*/
 body {
-    @apply overflow-x-hidden overflow-y-auto font-serif;
+    @apply overflow-x-hidden overflow-y-auto font-mono;
 }
 
 /*}*/
