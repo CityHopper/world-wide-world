@@ -4,12 +4,11 @@ import { useEffect, useState } from "react";
 import { VectorMap } from "@south-paw/react-vector-maps";
 import WorldLowRes from "@/public/world-low-res.json";
 import "@/styles/map.css";
-import "@/types/VectorMapsTypes";
+import "@/types/vectorMap";
 import { ICountry } from "@/types/types";
 import { Modal } from "@/components/Modal";
 import { capitalizeFirst } from "@/lib/functions";
 import Image from "next/image";
-// const Modal = dynamic(() => import("@/components/Modal"), { ssr: false });
 
 export default function Map({ data }: { data: ICountry[] }) {
   // const [allSelected, setAllSelected] = useState<string[]>([]);
@@ -35,15 +34,16 @@ export default function Map({ data }: { data: ICountry[] }) {
     }
   };
 
-  const onMouseOver = (e: MouseEvent) => {
-    const id: string = ((e.target as HTMLElement).attributes as any)?.id.value;
+  const onMouseOver = (event: MouseEvent) => {
+    const id: string = ((event.target as HTMLElement).attributes as any)?.id
+      .value;
     setTooltipId(id);
     setIsTooltipVisible(true);
   };
 
-  const onMouseMove = (e: MouseEvent) => {
-    setTooltipY(e.clientY - 20);
-    setTooltipX(e.clientX - 10);
+  const onMouseMove = (event: MouseEvent) => {
+    setTooltipY(event.clientY - 20);
+    setTooltipX(event.clientX - 10);
   };
 
   const onMouseOut = () => {

@@ -1,17 +1,17 @@
-import React from "react";
-
-interface VectorMapLayer {
-  /** Unique ID of each layer. */
-  id: string;
-  /** Name of the layer. */
-  name: string;
-  /** SVG path for the layer. */
-  d: string;
-}
+import { ReactNode } from "react";
 
 declare module "@south-paw/react-vector-maps" {
+  interface VectorMapLayer {
+    /** Unique ID of each layer. */
+    id: string;
+    /** Name of the layer. */
+    name: string;
+    /** SVG path for the layer. */
+    d: string;
+  }
+
   interface VectorMapProps {
-    children?: React.ReactNode;
+    children?: ReactNode;
     /** Unique ID of the SVG element. */
     id: string;
     /** Name of the map. */

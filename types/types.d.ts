@@ -11,9 +11,11 @@ export interface ICountry {
   cca3?: string;
   cca4?: string;
   cioc: string;
+  continents: string[];
   currencies: { code: string; name: string; symbol: string }[];
   demonyms: { [key: string]: { f: string; m: string } };
   flags: { alt: string; png: string; svg: string };
+  gini: { [key: string | number]: number }[];
   languages: { [key: string]: string };
   name: {
     common: string;
