@@ -1,12 +1,13 @@
 import { IModalProps } from "@/types/types";
-import { useCallback, useEffect, useRef } from "react";
+import { MouseEvent, useCallback, useEffect, useRef } from "react";
 import "@/styles/modal.css";
 
 export function Modal({ isOpen, onClose, children }: IModalProps) {
-  const modalRef = useRef(null);
+  const modalRef = useRef<HTMLDialogElement>(null);
 
   const onClick = useCallback(
-    ({ target }) => {
+    (e: MouseEvent) => {
+      const { target } = e;
       const { current: el } = modalRef;
       if (target === el) onClose();
     },
@@ -16,9 +17,9 @@ export function Modal({ isOpen, onClose, children }: IModalProps) {
   useEffect(() => {
     const { current: el } = modalRef;
     if (isOpen && el) {
-      el.showModal();
+      el?.showModal();
     } else {
-      el.close();
+      el?.close();
     }
   }, [isOpen]);
 

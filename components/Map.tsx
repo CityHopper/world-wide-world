@@ -1,10 +1,10 @@
 "use client";
 
-import { useEffect, useState } from "react";
+import { MouseEvent, useEffect, useState } from "react";
 import { VectorMap } from "@south-paw/react-vector-maps";
 import WorldLowRes from "@/public/world-low-res.json";
 import "@/styles/map.css";
-import "@/types/vectorMap";
+// import "@/types/vectorMap";
 import { ICountry } from "@/types/types";
 import { Modal } from "@/components/Modal";
 import { capitalizeFirst } from "@/lib/functions";
@@ -68,7 +68,6 @@ export default function Map({ data }: { data: ICountry[] }) {
     <section className={"map-container h-screen w-screen"}>
       <VectorMap
         {...WorldLowRes}
-        className={"map"}
         // checkedLayers={allSelected}
         layerProps={{ onClick, onMouseOver, onMouseMove, onMouseOut }}
       />
